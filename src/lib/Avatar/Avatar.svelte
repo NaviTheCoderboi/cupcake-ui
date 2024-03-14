@@ -1,19 +1,11 @@
 <script lang="ts">
-	import type { ColorsType, RadiusType, SizeType } from '$lib/types';
+	import type { AvatarCtxType, ColorsType, RadiusType, SizeType } from '$lib/types';
 	import { getContext } from 'svelte';
 	import type { HTMLImgAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
 	import { backgroundStyles, borderStyles, radiusStyles, sizeStyles } from './Avatar';
 
-	const avatarGroup:
-		| {
-				color: ColorsType;
-				radius: RadiusType;
-				size: SizeType;
-				isBordered: boolean;
-				isDisabled: boolean;
-		  }
-		| undefined = getContext('avatarGroup');
+	const avatarGroup: AvatarCtxType = getContext('avatarCtx');
 
 	type $$Props = HTMLImgAttributes & {
 		src?: string;

@@ -33,11 +33,11 @@
 		className
 	);
 
-	setContext<AccordianCtxType>('accordian', {
+	setContext<AccordianCtxType>('accordianCtx', {
 		variant: variant,
 		isDisabled: isDisabled,
 		selection: selection,
-		selected: selection === 'multiple' ? undefined : writable(''),
+		selected: selection === 'multiple' ? undefined : writable(),
 		transitionType: transitionType,
 		transitionParams: transitionParams
 	});

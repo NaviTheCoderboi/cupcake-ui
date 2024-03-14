@@ -7,7 +7,7 @@
 	import { blur, fade, fly, slide } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
 
-	let accordian: AccordianCtxType = getContext('accordian');
+	let accordian: AccordianCtxType = getContext('accordianCtx');
 	let accordianID = crypto.randomUUID();
 
 	type $$Props = HTMLAttributes<HTMLDivElement> & {

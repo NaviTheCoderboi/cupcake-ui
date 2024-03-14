@@ -20,7 +20,7 @@
 		variantStyles
 	} from './Button';
 
-	const buttonGroup: ButtonCtxType = getContext('buttonGroup');
+	const buttonGroup: ButtonCtxType = getContext('buttonCtx');
 
 	type $$Props = HTMLButtonAttributes & {
 		color?: ColorsType;

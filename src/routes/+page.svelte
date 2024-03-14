@@ -21,9 +21,9 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 	import Avatar from '$lib/Avatar/Avatar.svelte';
 	import AvatarGroup from '$lib/Avatar/AvatarGroup.svelte';
 	import Badge from '$lib/Badge/Badge.svelte';
-	import Breadcrumbs from '$lib/Breadcrumbs/Breadcrumbs.svelte';
 	import Button from '$lib/Button/Button.svelte';
 	import ButtonGroup from '$lib/Button/ButtonGroup.svelte';
+	import Card from '$lib/Card/Card.svelte';
 	import { getInitials } from '$lib/helpers';
 </script>
 
@@ -99,7 +99,6 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 		nisi ut aliquip ex ea commodo consequat.
 	</AccordianItem>
 </Accordian>
-
 <AvatarGroup isBordered>
 	{#each [1, 2, 3, 4, 5] as key}
 		<Avatar src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Mia"></Avatar>
@@ -107,16 +106,26 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 </AvatarGroup>
 
 <Avatar src="https://google.com">
-	<h1 slot="fallback" class="text-2xl font-bold text-white">{getInitials('Google Avatar')}</h1>
+	<h1 slot="fallback" class="text-2xl font-bold text-white">
+		{getInitials('Google Avatar')}
+	</h1>
 </Avatar>
 
 <Badge className="m-2" isOneChar size="sm" shape="circle" placement="bottom-right">
 	<Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />
 </Badge>
 
-<Breadcrumbs size="lg" className="w-1/3 mt-20">
-	<div>1</div>
-	<div>2</div>
-	<div>3</div>
-	<div>4</div>
-</Breadcrumbs>
+<div class="flex items-center justify-center p-6">
+	<Card radius="lg">
+		<h1 slot="header" class="text-2xl font-bold">Card Title</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+			incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+			exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		</p>
+		<div slot="footer" class="flex justify-end gap-3">
+			<Button>Cancel</Button>
+		</div>
+	</Card>
+</div>
+<Button>Cancel</Button>

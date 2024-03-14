@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ColorsType, RadiusType, SizeType } from '$lib/types';
+	import type { AvatarCtxType, ColorsType, RadiusType, SizeType } from '$lib/types';
 	import { setContext } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
@@ -22,7 +22,7 @@
 
 	const divClass = twMerge('inline-flex justify-center items-center last:mr-0', className);
 
-	setContext('avatarGroup', {
+	setContext<AvatarCtxType>('avatarCtx', {
 		color,
 		radius,
 		size,

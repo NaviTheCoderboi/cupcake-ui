@@ -77,14 +77,37 @@ export type BadgePlacement = {
 };
 export type BadgeShapeType = 'rectangle' | 'circle';
 
+// Avatar
+export type AvatarCtxType =
+	| {
+			color: ColorsType;
+			radius: RadiusType;
+			size: SizeType;
+			isBordered: boolean;
+			isDisabled: boolean;
+	  }
+	| undefined;
+
 // Breadcrumb
-export type BreadcrumbVariantType = 'solid' | 'bordered';
-export type BreadcrumbUnderlineType = 'none' | 'active' | 'hover' | 'focus' | 'always';
-export type BreadcrumbCtxType = {
-	variant: BreadcrumbVariantType;
-	color: ColorsType;
-	hideSeparator: boolean;
+export type BreadcrumbsVariantType = 'solid' | 'bordered';
+export type BreadcrumbsUnderlineType = 'none' | 'active' | 'hover' | 'focus' | 'always';
+export type BreadcrumbsCtxType =
+	| {
+			color: ColorsType;
+			hideSeparator: boolean;
+			underline: BreadcrumbsUnderlineType;
+			isDisabled: boolean;
+	  }
+	| undefined;
+export type BreadcrumbsVariant = {
+	[key in BreadcrumbsVariantType]: string;
 };
-export type BreadcrumbVariant = {
-	[key in BreadcrumbVariantType]: string;
+export type BreadcrumbsUnderline = {
+	[key in BreadcrumbsUnderlineType]: string;
+};
+
+// Card
+export type CardShadowType = 'none' | 'sm' | 'md' | 'lg';
+export type CardShadow = {
+	[key in CardShadowType]: string;
 };

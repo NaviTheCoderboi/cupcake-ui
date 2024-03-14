@@ -29,7 +29,7 @@
 
 	const divClass = twMerge('overflow-x-hidden inline-flex', radiusStyles[radius], className);
 
-	setContext<ButtonCtxType>('buttonGroup', {
+	setContext<ButtonCtxType>('buttonCtx', {
 		size,
 		disabled,
 		color,

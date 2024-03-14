@@ -30,17 +30,15 @@ const canLoadImage = async (url: string) => {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const refreshAvatar = (node: Avatar) => {
+	node.$set({ showFallback: false });
+};
+
 const useRipple: Action = (node) => {
 	const handleClick = (e: MouseEvent) => {
 		const x = e.clientX - node.offsetLeft;
 		const y = e.clientY - node.offsetTop;
 		const ripple = document.createElement('span');
-
-		// @ts-expect-error - ignore
-		if (node.style.position !== 'relative' || node.style.position !== 'absolute') {
-			node.style.position = 'relative';
-		}
-		node.style.overflow = 'hidden';
 
 		ripple.style.position = 'absolute';
 		ripple.style.backgroundColor = '#fff';
@@ -49,9 +47,6 @@ const useRipple: Action = (node) => {
 		ripple.style.borderRadius = '9999px';
 		ripple.style.left = x + 'px';
 		ripple.style.top = y + 'px';
-
-		node.appendChild(ripple);
-
 		ripple.animate(
 			[
 				{ width: '0px', height: '0px', opacity: '0.5' },
@@ -63,7 +58,7 @@ const useRipple: Action = (node) => {
 				iterations: Infinity
 			}
 		);
-
+		node.appendChild(ripple);
 		setTimeout(() => {
 			ripple.remove();
 		}, 500);
@@ -76,9 +71,4 @@ const useRipple: Action = (node) => {
 	};
 };
 
-const refreshAvatar = (node: Avatar) => {
-	node.$set({ showFallback: false });
-}
-
 export { canLoadImage, getInitials, refreshAvatar, sleep, useRipple };
-

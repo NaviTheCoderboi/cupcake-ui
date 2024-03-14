@@ -1,10 +1,12 @@
 <script lang="ts">
 	import type {
-		BreadcrumbCtxType,
-		BreadcrumbVariant,
-		BreadcrumbVariantType,
+		BreadcrumbsCtxType,
+		BreadcrumbsUnderlineType,
+		BreadcrumbsVariant,
+		BreadcrumbsVariantType,
 		Color,
 		ColorsType,
+		Radius,
 		RadiusType,
 		Size,
 		SizeType
@@ -13,34 +15,36 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
 
-	type $$Props = HTMLAttributes<HTMLDivElement> & {
-		variant?: BreadcrumbVariantType;
+	type $$Props = HTMLAttributes<HTMLElement> & {
+		variant?: BreadcrumbsVariantType;
 		color?: ColorsType;
 		size?: SizeType;
 		radius?: RadiusType;
 		hideSeprator?: boolean;
 		isDisabled?: boolean;
 		className?: string;
+		underline?: BreadcrumbsUnderlineType;
 	};
 
-	export let variant: BreadcrumbVariantType = 'solid';
+	export let variant: BreadcrumbsVariantType = 'solid';
 	export let color: ColorsType = 'primary';
 	export let size: SizeType = 'md';
 	export let radius: RadiusType = 'md';
 	export let hideSeparator: boolean = false;
 	export let isDisabled: boolean = false;
-	export let className: string = '';
+	export let underline: BreadcrumbsUnderlineType = 'hover';
 
-	setContext<BreadcrumbCtxType>('Breadcrumbs', {
+	setContext<BreadcrumbsCtxType>('breadcumbsCtx', {
 		color,
-		variant,
-		hideSeparator
+		hideSeparator,
+		underline,
+		isDisabled
 	});
 
 	const sizeStyles: Size = {
-		sm: 'text-base',
+		sm: 'text-base font-light',
 		md: 'text-lg',
-		lg: 'text-xl'
+		lg: 'text-xl font-medium'
 	};
 
 	const colorStyles: Color = {
@@ -53,27 +57,32 @@
 		info: 'text-blue-500'
 	};
 
-	const variantStyles: BreadcrumbVariant = {
+	const variantStyles: BreadcrumbsVariant = {
 		solid: 'bg-gray-200 dark:bg-gray-800',
 		bordered: 'border-2 border-gray-300 dark:border-gray-600'
 	};
 
+	const radiusStyles: Radius = {
+		none: 'rounded-none',
+		sm: 'rounded-sm',
+		md: 'rounded-md',
+		lg: 'rounded-xl',
+		full: 'rounded-full'
+	};
+
 	const divClass = twMerge(
-		'flex px-5 py-3 gap-4',
-		isDisabled ? 'opacity-50 pointer-events-none' : '',
+		'flex flex-wrap list-none px-5 py-3 gap-4',
 		sizeStyles[size],
 		colorStyles[color],
 		variantStyles[variant],
-		className
+		radiusStyles[radius]
 	);
+
+	const BreadcrumbsId = crypto.randomUUID();
 </script>
 
-<div class={divClass}>
-	<slot />
-</div>
-
-<!-- 
-Slots ->
-    - default
-    - seprator
--->
+<nav aria-label="Breadcrumbs-{BreadcrumbsId}" {...$$restProps} on:*>
+	<ol class={divClass}>
+		<slot />
+	</ol>
+</nav>
