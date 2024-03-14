@@ -19,9 +19,12 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 	import Accordian from '$lib/Accordian/Accordian.svelte';
 	import AccordianItem from '$lib/Accordian/AccordianItem.svelte';
 	import Avatar from '$lib/Avatar/Avatar.svelte';
+	import AvatarGroup from '$lib/Avatar/AvatarGroup.svelte';
+	import Badge from '$lib/Badge/Badge.svelte';
 	import Breadcrumbs from '$lib/Breadcrumbs/Breadcrumbs.svelte';
 	import Button from '$lib/Button/Button.svelte';
 	import ButtonGroup from '$lib/Button/ButtonGroup.svelte';
+	import { getInitials } from '$lib/helpers';
 </script>
 
 <ButtonGroup color="primary" radius="full" variant="ghost">
@@ -97,7 +100,21 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 	</AccordianItem>
 </Accordian>
 
-<Breadcrumbs>
+<AvatarGroup isBordered>
+	{#each [1, 2, 3, 4, 5] as key}
+		<Avatar src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Mia"></Avatar>
+	{/each}
+</AvatarGroup>
+
+<Avatar src="https://google.com">
+	<h1 slot="fallback" class="text-2xl font-bold text-white">{getInitials('Google Avatar')}</h1>
+</Avatar>
+
+<Badge className="m-2" isOneChar size="sm" shape="circle" placement="bottom-right">
+	<Avatar src="https://i.pravatar.cc/150?u=a04258a2462d826712d" />
+</Badge>
+
+<Breadcrumbs size="lg" className="w-1/3 mt-20">
 	<div>1</div>
 	<div>2</div>
 	<div>3</div>

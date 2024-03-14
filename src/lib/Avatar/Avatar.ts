@@ -15,13 +15,13 @@ const radiusStyles: Radius = {
 };
 
 const borderStyles: Color = {
-	default: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-gray-700',
-	primary: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-primary-500',
-	secondary: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-violet-500',
-	success: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-green-500',
-	danger: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-red-500',
-	warning: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-yellow-500',
-	info: 'ring-2 ring-offset-2 ring-offset-gray-800 ring-blue-500'
+	default: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-gray-700',
+	primary: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-primary-500',
+	secondary: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-violet-500',
+	success: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-green-500',
+	danger: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-red-500',
+	warning: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-yellow-500',
+	info: 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-black ring-blue-500'
 };
 
 const backgroundStyles: Color = {

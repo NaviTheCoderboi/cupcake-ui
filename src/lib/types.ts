@@ -85,3 +85,6 @@ export type BreadcrumbCtxType = {
 	color: ColorsType;
 	hideSeparator: boolean;
 };
+export type BreadcrumbVariant = {
+	[key in BreadcrumbVariantType]: string;
+};
