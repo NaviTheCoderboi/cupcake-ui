@@ -40,6 +40,7 @@ const useRipple: Action = (node) => {
 		const y = e.clientY - node.offsetTop;
 		const ripple = document.createElement('span');
 
+		ripple.style.display = 'block';
 		ripple.style.position = 'absolute';
 		ripple.style.backgroundColor = '#fff';
 		ripple.style.transform = 'translate(-50%, -50%)';
