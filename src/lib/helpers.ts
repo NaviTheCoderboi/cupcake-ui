@@ -61,7 +61,7 @@ const useRipple: Action = (node) => {
 		node.appendChild(ripple);
 		setTimeout(() => {
 			ripple.remove();
-		}, 500);
+		}, 10000);
 	};
 	node.addEventListener('click', handleClick);
 	return {
