@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { useRipple } from '$lib/helpers';
 	import type {
 		ButtonCtxType,
 		ButtonVariantsType,
@@ -8,6 +7,8 @@
 		SizeType
 	} from '$lib/types';
 	import { getContext } from 'svelte';
+	import { ripple } from 'svelte-ripple-action';
+	import 'svelte-ripple-action/ripple.css';
 	import type { Action } from 'svelte/action';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 	import { twMerge } from 'tailwind-merge';
@@ -36,7 +37,7 @@
 		href?: string;
 		target?: string;
 		tag?: string;
-		action?: Action;
+		sAction?: Action;
 	};
 
 	export let color: ColorsType = buttonGroup?.color || 'primary';
@@ -52,7 +53,7 @@
 	export let href: string | undefined = undefined;
 	export let target: string | undefined = undefined;
 	export let tag: string = 'button';
-	export let action: Action = useRipple;
+	export let sAction: Action<HTMLElement, any> = ripple;
 
 	const buttonClass: string = twMerge(
 		variantStyles(variant, color),
@@ -80,7 +81,7 @@
 				e.stopPropagation();
 			}
 		}}
-		use:action
+		use:sAction
 		on:*
 	>
 		{#if isLoading}
@@ -100,7 +101,7 @@
 		{/if}
 	</a>
 {:else if tag === 'button'}
-	<button {type} class={buttonClass} aria-disabled={isDisabled} use:action {...$$restProps} on:*>
+	<button {type} class={buttonClass} aria-disabled={isDisabled} use:sAction {...$$restProps} on:*>
 		{#if isLoading}
 			{#if spinnerPosition === 'left'}<slot name="spinner">
 					<Spinner />
@@ -125,7 +126,7 @@
 		role="button"
 		tabindex="0"
 		aria-disabled={isDisabled}
-		use:action
+		use:sAction
 	>
 		{#if isLoading}
 			{#if spinnerPosition === 'left'}<slot name="spinner">

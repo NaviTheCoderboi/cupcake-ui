@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import type { AvatarCtxType, ColorsType, RadiusType, SizeType } from '$lib/types';
 	import { getContext } from 'svelte';
 	import type { HTMLImgAttributes } from 'svelte/elements';
@@ -31,8 +32,6 @@
 	export let href: string | undefined = undefined;
 	export let alt: string | undefined = undefined;
 
-	let img: HTMLImageElement | null = null;
-
 	const avatarClass = twMerge(
 		radiusStyles[radius],
 		isBordered ? borderStyles[color] : '',
@@ -44,16 +43,14 @@
 		className
 	);
 
-	$: {
-		if (img && img.complete) {
-			showFallback = !img.naturalWidth;
-		} else if (img) {
-			showFallback = true;
-		}
-	}
-
 	const refresh = () => {
 		showFallback = false;
+	};
+
+	const onError = () => {
+		if (browser && src) {
+			showFallback = true;
+		}
 	};
 </script>
 
@@ -68,7 +65,7 @@
 		{#if showFallback}
 			<slot name="fallback" {refresh} />
 		{:else if src}
-			<img {src} {alt} bind:this={img} />
+			<img {src} {alt} on:error={onError} />
 		{:else if $$slots.default}
 			<slot />
 		{:else}
@@ -91,5 +88,5 @@
 		<slot name="fallback" {refresh} />
 	</div>
 {:else}
-	<img {src} {alt} class={avatarClass} bind:this={img} on:* />
+	<img {src} {alt} class={avatarClass} on:error={onError} on:* />
 {/if}

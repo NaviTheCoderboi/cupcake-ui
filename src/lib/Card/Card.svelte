@@ -61,7 +61,7 @@
 	}
 </script>
 
-<div class={divClass} {...$$restProps}>
+<div class={divClass} {...$$restProps} on:*>
 	{#if $$slots.header}
 		<div class={_headerClass}>
 			<slot name="header" />

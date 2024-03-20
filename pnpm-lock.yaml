@@ -73,6 +73,9 @@ devDependencies:
   svelte-preprocess-delegate-events:
     specifier: ^0.4.3
     version: 0.4.3(svelte@4.2.12)
+  svelte-ripple-action:
+    specifier: ^1.0.6
+    version: 1.0.6(svelte@4.2.12)
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -2516,6 +2519,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 4.2.12
       typescript: 5.3.3
+    dev: true
+
+  /svelte-ripple-action@1.0.6(svelte@4.2.12):
+    resolution: {integrity: sha512-0FVy815Xu6nxbWmuNk/T+n9/9zvD+jw5eAdG54RJvVwKnRuNLoUwZgMdoHdyf+huQV+qKzPJgGp549RZu/vvfw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.2.12
     dev: true
 
   /svelte2tsx@0.7.3(svelte@4.2.12)(typescript@5.3.3):

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import Logo from '$docs/assets/logo.webp';
 	import Github from '$docs/icons/Github.svelte';
 	import Theme from '$docs/icons/Theme.svelte';
 	import { onMount } from 'svelte';
@@ -50,8 +49,8 @@
 		class="mx-auto flex w-4/5 items-center justify-between rounded-full bg-white bg-opacity-10 px-4 py-2 backdrop-blur-sm backdrop-filter dark:bg-black"
 	>
 		<a href="/" class="flex items-center justify-center gap-2">
-			<img src={Logo} alt="" width="50" height="50" />
-			<h1 class="text-2xl font-medium">CupCake UI</h1>
+			<!-- <img src={Logo} alt="" width="50" height="50" />
+			<h1 class="text-2xl font-medium">CupCake UI</h1> -->
 		</a>
 		<div
 			class="flex items-center justify-center gap-3 divide-x-2 divide-gray-400 dark:divide-gray-600"
