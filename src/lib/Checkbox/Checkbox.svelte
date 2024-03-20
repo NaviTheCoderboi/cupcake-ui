@@ -1,11 +1,15 @@
 <script lang="ts">
 	import VisuallyHidden from '$lib/prebuilts/visuallyHidden.svelte';
-	import type { ColorsType, RadiusType, SizeType } from '$lib/types';
+	import type { CheckboxGroupCtxType, ColorsType, RadiusType, SizeType } from '$lib/types';
+	import { getContext } from 'svelte';
 	import { quintOut } from 'svelte/easing';
 	import type { HTMLAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import { draw, scale } from 'svelte/transition';
 	import { twMerge } from 'tailwind-merge';
 	import { colorStyles, radiusStyles, sizeStyles } from './Checkbox';
+
+	let checkboxGroupCtx: CheckboxGroupCtxType = getContext('checkboxGroupCtx');
+	console.log(checkboxGroupCtx);
 
 	type $$Props = HTMLAttributes<HTMLLabelElement> & {
 		value?: string;
@@ -17,7 +21,6 @@
 		defaultSelected?: boolean;
 		isRequired?: boolean;
 		isDisabled?: boolean;
-		disableAnimation?: boolean;
 		className?: string;
 		iconClass?: string;
 		type?: HTMLButtonAttributes['type'];

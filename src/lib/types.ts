@@ -111,3 +111,16 @@ export type CardShadowType = 'none' | 'sm' | 'md' | 'lg';
 export type CardShadow = {
 	[key in CardShadowType]: string;
 };
+
+// Checkbox
+export type CheckboxGroupOrientationType = 'horizontal' | 'vertical';
+export type CheckboxGroupCtxType = {
+	color: ColorsType;
+	size: SizeType;
+	radius: RadiusType;
+	value: string[];
+	defaultValue: string[];
+	isInvalid: boolean;
+	isDisabled: boolean;
+	isRequired: boolean;
+};

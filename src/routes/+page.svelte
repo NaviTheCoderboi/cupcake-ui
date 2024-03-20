@@ -135,30 +135,16 @@ Sweeten Your Interface with Cupcake UI: Delightful Designs Made Easy! -->
 
 <script lang="ts">
 	import Checkbox from '$lib/Checkbox/Checkbox.svelte';
-	import { scale } from 'svelte/transition';
+	import CheckboxGroup from '$lib/Checkbox/CheckboxGroup.svelte';
 
 	let checked: boolean = false;
 </script>
 
 <div class="flex h-[90vh] w-full items-center justify-center gap-5">
-	<Checkbox bind:isSelected={checked}>
-		<svelte:fragment slot="icon" let:isSelected>
-			<svg
-				stroke="currentColor"
-				fill="currentColor"
-				stroke-width="0"
-				viewBox="0 0 512 512"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				{#if isSelected}
-					<path
-						transition:scale={{ duration: 500, delay: 200 }}
-						transform-origin="center"
-						d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
-					></path>
-				{/if}
-			</svg>
-		</svelte:fragment>
-		do you agree?</Checkbox
-	>
+	<CheckboxGroup>
+		<Checkbox>1</Checkbox>
+		<Checkbox>2</Checkbox>
+		<Checkbox>3</Checkbox>
+		<Checkbox>4</Checkbox>
+	</CheckboxGroup>
 </div>
